@@ -24,13 +24,13 @@ Pravidlá:
 
 ## 2. Bez podpier
 - **Previs ≤ 45° od zvislice** (PETG ≤ 40°).
-- **Diery v zvislých stenách** daj do špičky: kosoštvorec, slza (teardrop) alebo gotický oblúk. Vodorovný strop vytvorí most, zaoblený vrchol vytvorí malý vodorovný úsek.
+- **Výrezy a okná v zvislých stenách** (mriežky, odľahčenia) daj do špičky: kosoštvorec, slza alebo gotický oblúk. Vodorovný strop vytvorí most.
 - **Okná a výrezy** nikdy neorezávaj rovnou vodorovnou čiarou zhora. Oko, ktoré by zasiahlo do zakázanej zóny, vynechaj celé.
 - **Spodné vonkajšie hrany: skosenie 45°** (0,5–1 mm proti elephant foot, alebo väčšie ako dizajn a pre stohovanie). Fillet dole vytvorí previs.
 - **Horné hrany:** fillet alebo skosenie, ako chceš.
 - **Vnútorné lemy a výstuhy:** spodná plocha pod 45°, vrch ľubovoľný (trojuholníkový profil).
 - **Mosty:** ak sa nedá vyhnúť, max ~15 mm (0,4) / ~20 mm (0,6) pri PLA. Lepšie je zmeniť orientáciu alebo diel rozdeliť.
-- **Vodorovné diery** (os rovnobežne s podložkou): slzový tvar so špičkou hore.
+- **Vodorovné okrúhle diery** (os rovnobežne s podložkou, napr. pre skrutku) nechaj predvolene okrúhle. Malé diery do ~Ø 8–10 mm sa pri PLA/PETG/ASA vytlačia bez podpier, strop je len mierne ovisnutý. Slza so špičkou hore (`slza()` v šablóne) je **voľba na zváženie**: čistejší strop, ale diera je vyššia a menej pekná na pohľadovej strane. Pri väčších dierach (nad ~10 mm) alebo presných uloženiach ju odporuč.
 
 ## 3. Čas a materiál – čo naozaj pomáha
 Od najväčšieho dopadu:

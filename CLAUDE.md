@@ -51,7 +51,8 @@ Príkazy sa spúšťajú z priečinka projektu.
 
 ## Cieľ: efektívna tlač
 Poradie priorít: **funkcia a pevnosť → tlač bez podpier → čas a materiál → vzhľad.**
-- Navrhuj tak, aby podpery neboli potrebné: previsy ≤ 45°, horné okraje dier do špičky, spodné hrany skosené pod 45°.
+- Navrhuj tak, aby podpery neboli potrebné: previsy ≤ 45°, spodné hrany skosené pod 45°.
+- **Okrúhle diery so stropom (vodorovná os) nechaj okrúhle.** Slzu alebo špičku hore nerob automaticky, len ju **navrhni na zváženie** s krátkym zdôvodnením (veľkosť diery, či ide o lícnu plochu, či tvar dôležitý pre funkciu, napr. GoPro alebo ložisko). Pri kontrole previsov hlás strop okrúhlej diery ako informáciu, nie ako chybu.
 - Hrúbky stien a rebier volím tak, aby ich vyplnili celé perimetre (žiadne gap fill, žiadna výplň v tenkých stenách).
 - Pri voľbe vzoru alebo tvaru zdôvodni dopad na čas a materiál. Kde to pomôže, porovnaj dve varianty.
 - Over si, že diel sa zmestí na podložku (pozri limity tlačiarne). Ak nie, navrhni delenie so spojmi.
