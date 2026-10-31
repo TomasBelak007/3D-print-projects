@@ -1,35 +1,62 @@
 {
+    "fileFormatVersion": "1",
     "parameterSets": {
         "original_fusion": {
-            "pocet_kolikov": "1",
-            "roztec": "25",
-            "vyska_dosky": "35",
-            "priemer_kolika": "6",
             "dlzka_kolika": "31.6",
-            "uhol_kolika": "45",
+            "pocet_kolikov": "1",
+            "posun_kolika": "1.87",
+            "priemer_kolika": "6",
             "r_zaoblenia": "3",
-            "posun_kolika": "1.87"
+            "roztec": "25",
+            "uhol_kolika": "45",
+            "vyska_dosky": "35"
         },
         "3_koliky": {
-            "pocet_kolikov": "3",
-            "roztec": "25",
-            "vyska_dosky": "35",
-            "priemer_kolika": "6",
             "dlzka_kolika": "31.6",
-            "uhol_kolika": "45",
+            "pocet_kolikov": "3",
+            "posun_kolika": "0",
+            "priemer_kolika": "6",
             "r_zaoblenia": "3",
-            "posun_kolika": "0"
+            "roztec": "25",
+            "uhol_kolika": "45",
+            "vyska_dosky": "35"
         },
         "velky_1": {
-            "pocet_kolikov": "1",
-            "roztec": "30",
-            "vyska_dosky": "50",
-            "priemer_kolika": "8",
             "dlzka_kolika": "45",
-            "uhol_kolika": "50",
+            "pocet_kolikov": "1",
+            "posun_kolika": "0",
+            "priemer_kolika": "8",
             "r_zaoblenia": "4",
-            "posun_kolika": "0"
+            "roztec": "30",
+            "uhol_kolika": "50",
+            "vyska_dosky": "50"
+        },
+        "New set 1": {
+            "$fa": "3",
+            "$fs": "0.29999999999999999",
+            "dlzka_kolika": "31.600000000000001",
+            "e": "0.01",
+            "hlbka_kapsy": "1",
+            "hrubka_dosky": "3",
+            "kapsa": "true",
+            "kroky_zaoblenia": "24",
+            "material": "PETG",
+            "okraj_kapsy": "2",
+            "pocet_kolikov": "5",
+            "podlozka": "[300, 320, 320]",
+            "posun_kolika": "0",
+            "priemer_kolika": "8",
+            "r_hrany": "0.5",
+            "r_kapsy": "2",
+            "r_rohu": "3",
+            "r_zaoblenia": "3",
+            "roztec": "30",
+            "skos_dole": "0.40000000000000002",
+            "tryska": "0.40000000000000002",
+            "uhol_kolika": "45",
+            "vrstva": "0.20000000000000001",
+            "vyska_dosky": "35",
+            "wall_loops": "4"
         }
-    },
-    "fileFormatVersion": "1"
+    }
 }
