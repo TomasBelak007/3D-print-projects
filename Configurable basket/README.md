@@ -2,15 +2,19 @@
 
 Parametrické stohovateľné košíky na cyklo oblečenie do skrine a lišta, ktorá ich na polici vedie a drží v rade. Všetko PLA, tryska 0,6 mm, bez podpier.
 
+![Košík](nahlady/kosik.png)
+
 ## Súbory
 | Súbor | Čo to je |
 |---|---|
-| `kosik.scad` | košík – hlavný model |
-| `kosik.json` | sady parametrov z Customizera (sada 3 = šírka 180) |
-| `kosik_<sirka>_<stoh_kusov>.stl` | exporty: `250_1/2/3` = šírka 250 pre stoh 1/2/3 kusy, `180_1`, `200_1` = užšie košíky (výška 250, 1 kus) |
-| `kosik.3mf` | projekt z Bambu Studia (nastavenia slicera) |
-| `lista.scad`, `lista.json`, `lista.stl` | vodiaca lista |
-| `vyrobny-checklist-kosiky.md` / `.xlsx` | čo je vytlačené, čo zostáva, kontroly pred/po tlači |
+| `scad/kosik.scad` | košík – hlavný model |
+| `scad/kosik.json` | sady parametrov z Customizera (sada 3 = šírka 180) |
+| `scad/lista.scad`, `scad/lista.json` | vodiaca lista – model a sady parametrov |
+| `stl/kosik_<sirka>_<stoh_kusov>.stl` | exporty: `250_1/2/3` = šírka 250 pre stoh 1/2/3 kusy, `180_1`, `200_1` = užšie košíky (výška 250, 1 kus) |
+| `stl/lista.stl` | export vodiacej lišty |
+| `stl/kosik.3mf` | projekt z Bambu Studia (nastavenia slicera) |
+| `vyroba/vyrobny-checklist-kosiky.xlsx` | čo je vytlačené, čo zostáva, kontroly pred/po tlači |
+| `nahlady/kosik.png`, `nahlady/lista.png` | náhľady z OpenSCAD |
 
 STL sú export k dátumu exportu – pri pochybnosti radšej vyrenderuj znova z `.scad`.
 
@@ -42,11 +46,13 @@ Menia sa len vonkajšie rozmery **`sirka` × `hlbka` × `vyska`** a **`stoh_kuso
 - Rohy košíka R 8, okraj dna plný (`r_roh + 10`).
 
 ### Spotreba (odhad zo slicera, bez polovičných ôk)
-~8 h 30 min a ~350 g na košík ~126 mm, ~6 h 50 min a ~305 g na ~85 mm. Stav výroby → `vyrobny-checklist-kosiky.md`.
+~8 h 30 min a ~350 g na košík ~126 mm, ~6 h 50 min a ~305 g na ~85 mm. Stav výroby → `vyroba/vyrobny-checklist-kosiky.xlsx`.
 
 ---
 
 ## Vodiaca lista (`lista.scad`)
+
+![Vodiaca lista](nahlady/lista.png)
 
 ### Princíp
 Lišta sa priskrutkuje na policu do medzery medzi košíky (`typ = "stred"`) alebo ku stene skrine (`typ = "kraj"`). Boky hrebeňa majú 45° a sú rovnobežné so spodným skosením košíka → košík sa pri zasúvaní sám vycentruje a nemôže ujsť do strany. **Košík stojí na polici, nie na lište** (hrebeň končí `rezerva_h = 1 mm` pod koncom skosenia).
@@ -69,6 +75,7 @@ V `lista.json` sú dve sady: dĺžka 300 s vrutom 4×16 (hlava 8) a dĺžka 280 
 ---
 
 ## Ako pokračovať
-- Render: `openscad -o kosik_250_2.stl -D 'vyska=250' -D 'stoh_kusov=2' kosik.scad` (2024+: pridaj `--backend=manifold`).
+- Render (z priečinka projektu): `openscad -o stl/kosik_250_2.stl -D 'vyska=250' -D 'stoh_kusov=2' scad/kosik.scad` (2024+: pridaj `--backend=manifold`).
+- Náhľad: `openscad -o nahlady/kosik.png --imgsize=1200,900 --viewall --autocenter --colorscheme=Tomorrow scad/kosik.scad`.
 - Pri zmene `skos_dole` alebo `stena` v košíku uprav aj `skos_dole` v liste a skontroluj, či stále sedí stohovanie (assert, ECHO zapad).
 - Možné ďalšie kroky: vyhodnotiť prvý vytlačený košík s polovičnými okami (čas/gramy vs. odhad), overiť lištu `kraj` pri stene skrine, prípadne vyskúšať oko 36/72 na ďalšiu úsporu materiálu.
