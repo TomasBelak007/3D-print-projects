@@ -9,7 +9,7 @@
 | Max. teplota podložky | 120 °C |
 | Aktívne vyhrievanie komory | do 65 °C |
 | Výmena hotendov | Vortek: ľavá tryska vymieňa hotendy zo zásobníka (až 6). Viac materiálov alebo farieb s menším preplachom. |
-| Moje trysky | 0,4 mm a 0,6 mm |
+| Moje trysky | 0,4 mm, 0,6 mm a **0,8 mm High Flow** (Bambu Lab) |
 
 **Bezpečný limit pre návrh: 300 × 320 × 320 mm.** Pri tlači dvoma tryskami treba nechať rezervu na wipe a prime tower.
 
@@ -19,14 +19,17 @@
 - AMS sa počas tlače nedá sušiť, ak je priradené k aktuálnej úlohe. Sušiť treba vopred alebo v nepoužívanej jednotke.
 
 ## Trysky – referenčné hodnoty (Bambu Studio)
-| | 0,4 mm | 0,6 mm |
-|---|---|---|
-| Šírka linky (w) | 0,42 mm | 0,62 mm |
-| Vrstvy | 0,12–0,28 (štandard **0,20**) | 0,18–0,42 (štandard **0,30**) |
-| Použitie | detaily, tolerancie, mechanika, malé diely | veľké diely, nádoby, rýchlosť a pevnosť |
-| Min. hrúbka prvku | 2 linky ≈ 0,8 mm | 2 linky ≈ 1,2 mm |
+| | 0,4 mm | 0,6 mm | 0,8 mm High Flow |
+|---|---|---|---|
+| Šírka linky (w) | 0,42 mm | 0,62 mm | 0,82 mm |
+| Vrstvy | 0,12–0,28 (štandard **0,20**) | 0,18–0,42 (štandard **0,30**) | 0,24–0,56 (štandard **0,40**) |
+| Max. prietok PLA (Bambu PLA Basic) | ~21 mm³/s | ~21 mm³/s | **~40 mm³/s** (Standard Flow 0,8: ~30) |
+| Použitie | detaily, tolerancie, mechanika, malé diely | veľké diely, nádoby, rýchlosť a pevnosť | veľké hrubostenné diely, rýchle prototypy, kde nevadia viditeľné vrstvy |
+| Min. hrúbka prvku | 2 linky ≈ 0,8 mm | 2 linky ≈ 1,2 mm | 2 linky ≈ 1,5 mm |
 
 Pravidlo: **čo je väčšie ako ~150 mm a nemá jemné detaily, tlač na 0,6 mm.** Rovnaký objem materiálu prejde rýchlejšie a diel je pevnejší.
+
+**0,8 High Flow** sa oplatí, keď diel má hrubé steny (≥ 3 mm) a veľký objem, a keď je čas dôležitejší ako vzhľad. Pri tenkostennej mriežke (napr. košíky) je úspora menšia, lebo rýchlosť obmedzujú krátke ťahy a zrýchlenia, nie prietok. Vrstva 0,40 = výrazne viditeľné schody na šikmých a zaoblených plochách, malé diery a detaily pod ~2 mm sa nevykreslia. Šírka linky, vrstvy a prietok sú štartovné hodnoty, over ich v profile Bambu Studia pre konkrétny hotend.
 
 ## Materiály
 | | PLA | PETG | ASA |
@@ -47,9 +50,9 @@ Pravidlo: **čo je väčšie ako ~150 mm a nemá jemné detaily, tlač na 0,6 mm
 - **ASA:** veľké ploché diely zaobli (rohy R ≥ 5 mm) a pod rohy pridaj „mouse ears" (kotúčiky 0,3 mm). Vyhni sa dlhým rovným stenám bez rebier. Rátaj so zmrštením ~0,5 %.
 
 ## Rýchlosť a prietok
-- Strop rýchlosti je väčšinou **Max volumetric speed** v profile filamentu. Prierez linky = w × h. Pri 0,62 × 0,3 = 0,19 mm² a limite 21 mm³/s to dáva max. ~110 mm/s.
+- Strop rýchlosti je väčšinou **Max volumetric speed** v profile filamentu. Prierez linky = w × h. Pri 0,62 × 0,3 = 0,19 mm² a limite 21 mm³/s to dáva max. ~110 mm/s. Pri 0,8 High Flow: 0,82 × 0,4 = 0,33 mm² a ~40 mm³/s → max. ~120 mm/s, ale s ~1,7× väčším prierezom linky.
 - Režim **Sport (124 %)** v tlačiarni zrýchľuje pohyb, ale reálna úspora času je skôr 15–20 %. Na prvom kuse skontroluj podextrudovanie.
-- Pri dlhých sériách sa oplatí overiť a zvýšiť max volumetric speed (rýchle PLA, High Flow tryska).
+- Pri dlhých sériách sa oplatí overiť a zvýšiť max volumetric speed (rýchle PLA, 0,8 High Flow tryska).
 
 ## Viac materiálov a farieb
 - Každá výmena farby na jednej tryske = preplach (purge). Vortek a druhá tryska purge výrazne znižujú.

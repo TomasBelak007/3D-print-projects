@@ -72,7 +72,7 @@ Parametre sa dajú meniť cez `-D 'vyska=250' -D 'stoh_kusov=2'` alebo načíta�
 |---|---|
 | **Tlačiareň** | Bambu Lab H2C – dve trysky, výmena hotendov Vortek, vyhrievaná komora do 65 °C |
 | **Bezpečný tlačový priestor** | 300 × 320 × 320 mm |
-| **Trysky** | 0,4 mm (detaily, mechanika) · 0,6 mm (veľké diely, rýchlosť) |
+| **Trysky** | 0,4 mm (detaily, mechanika) · 0,6 mm (veľké diely, rýchlosť) · 0,8 mm High Flow (hrubostenné diely, max. rýchlosť) |
 | **Filament** | 2× AMS 2 Pro (PLA, PETG) · 1× AMS HT (ASA, technické materiály) |
 | **Materiály** | PLA · PETG · ASA |
 | **Slicer** | Bambu Studio |

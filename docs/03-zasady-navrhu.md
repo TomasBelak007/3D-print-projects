@@ -15,6 +15,7 @@ T(n) = w + (n - 1) * s        // hrubka n liniek vedla seba
 | 0,4 / 0,20 (w 0,42) | 0,377 | 0,80 | 1,55 | 2,31 | 3,06 |
 | 0,4 / 0,28 (w 0,42) | 0,360 | 0,78 | 1,50 | 2,22 | 2,94 |
 | 0,6 / 0,30 (w 0,62) | 0,556 | 1,18 | **2,29** | 3,40 | **4,51** |
+| 0,8 HF / 0,40 (w 0,82) | 0,734 | 1,55 | **3,02** | 4,49 | 5,96 |
 
 Pravidlá:
 - Stena, rebro aj čap majú hrúbku **T(2N)** pre zvolený wall loops N. Vtedy sú celé z perimetrov, bez gap fill a bez riedkej výplne, čo je rýchle aj pevné.

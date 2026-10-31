@@ -58,7 +58,7 @@ Poradie priorít: **funkcia a pevnosť → tlač bez podpier → čas a materiá
 
 ## Moje vybavenie
 - Bambu Lab **H2C**: dve trysky, ľavá s výmenou hotendov Vortek, aktívne vyhrievaná komora do 65 °C.
-- Trysky, ktoré mám: **0,4 mm a 0,6 mm**.
+- Trysky, ktoré mám: **0,4 mm, 0,6 mm a 0,8 mm High Flow** (Bambu Lab, ~40 mm³/s PLA).
 - **2× AMS 2 Pro** (sušenie do 65 °C) a **1× AMS HT** (1 cievka, sušenie aj pre technické materiály).
 - Materiály, s ktorými mám skúsenosti: **PLA, PETG, ASA**.
 - Slicer: Bambu Studio.

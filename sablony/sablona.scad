@@ -20,14 +20,14 @@ mriezka_steny = true;
 mriezka_dno   = false;
 
 /* [Tlac] */
-tryska     = 0.6;   // [0.4, 0.6]
-vrstva     = 0.30;  // 0.20 pre 0.4 trysku, 0.30 pre 0.6
+tryska     = 0.6;   // [0.4, 0.6, 0.8]
+vrstva     = 0.30;  // 0.20 pre 0.4 trysku, 0.30 pre 0.6, 0.40 pre 0.8 HF
 wall_loops = 2;     // = nastavenie v sliceri (na kazdy obrys)
 material   = "PLA"; // ["PLA", "PETG", "ASA"]
 
 /* [Konstanty – netreba menit] */
 // --- odvodene z trysky a vrstvy ---
-w_linky = tryska <= 0.4 ? 0.42 : 0.62;              // sirka linky (Bambu default)
+w_linky = tryska <= 0.4 ? 0.42 : tryska <= 0.6 ? 0.62 : 0.82;  // sirka linky (Bambu default)
 s_linky = w_linky - vrstva * (1 - PI/4);            // roztec susednych liniek
 function hrubka(linky) = w_linky + (linky - 1) * s_linky;
 stena   = hrubka(2 * wall_loops);                   // stena = 2N liniek
