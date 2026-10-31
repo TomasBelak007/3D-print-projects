@@ -11,6 +11,7 @@ Zbierka vlastných **parametrických 3D modelov** navrhnutých v [OpenSCAD](http
 | | Projekt | Popis |
 |---|---|---|
 | <img src="Configurable%20basket/nahlady/kosik.png" width="180" alt="Košík"> | **[Košíky do skrine + vodiaca lista](Configurable%20basket/)** | Stohovateľné košíky s diamantovou mriežkou (oko 30/60, bez podpier), ľubovoľná šírka, hĺbka a výška stohu. K tomu lišta na polici, ktorá košíky vycentruje a drží v rade. PLA, tryska 0,6 mm. |
+| <img src="Bike%20light%20bracket/nahlady/exposure_clip.png" width="180" alt="Držiak svetla"> | **[Držiak svetla na bicykel](Bike%20light%20bracket/)** | Nacvakávací klip s GoPro úchytom pre svetlo Exposure Tracer (Ø 18 mm, priemer nastaviteľný). Os skrutky kolmo na svetlo, tlač bez podpier. ASA, tryska 0,4 mm. |
 
 ---
 

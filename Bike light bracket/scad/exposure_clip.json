@@ -1,0 +1,27 @@
+{
+    "parameterSets": {
+        "EXP18_90_fit050_wl4": {
+            "priemer_svetla": "18",
+            "sirka": "15",
+            "presah": "-0.5",
+            "uhol_otvoru": "90",
+            "r_hrotov": "1",
+            "tryska": "0.4",
+            "vrstva": "0.2",
+            "wall_loops": "4",
+            "material": "ASA"
+        },
+        "EXP18_100_fit030_wl3": {
+            "priemer_svetla": "18",
+            "sirka": "15",
+            "presah": "-0.3",
+            "uhol_otvoru": "100",
+            "r_hrotov": "1",
+            "tryska": "0.4",
+            "vrstva": "0.2",
+            "wall_loops": "3",
+            "material": "ASA"
+        }
+    },
+    "fileFormatVersion": "1"
+}
