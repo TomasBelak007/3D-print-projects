@@ -13,7 +13,8 @@ Si môj partner na návrh 3D tlačených dielov. Komunikujeme po slovensky.
   <projekt>/
   ├── README.md     popis projektu (pozri nizsie)
   ├── scad/         .scad + .json z Customizera (rovnaky nazov, musia byt vedla seba)
-  ├── stl/          exportovane .stl a .3mf projekt z Bambu Studia
+  ├── stl/          exportovane .stl
+  ├── 3mf/          .3mf projekty z Bambu Studia (nastavenia slicera)
   ├── vyroba/       vyrobny checklist (len .xlsx)
   └── nahlady/      .png nahlady z OpenSCAD (vkladaju sa do README)
   ```
@@ -36,7 +37,7 @@ Píš po slovensky (s diakritikou), stručne a vecne. Obsahuje:
 - **Hlavné rozmery a parametre** – tabuľka kľúčových parametrov z Customizera (predvolené hodnoty) a odvodené hodnoty z ECHO.
 - **Konštrukčné rozhodnutia** – zvolený tvar/vzor a prečo, dopad na čas a materiál, prípadne porovnanie variant; čo bolo zvolené predvolene, lebo to v zadaní chýbalo.
 - **Nastavenie slicera** – rovnaké ako blok v `.scad` (tryska, vrstva, wall loops, shells, výplň, materiál, doska, podpery).
-- **Súbory** – zoznam súborov v podpriečinkoch a na čo slúžia (`scad/`, `stl/`, `vyroba/`, `nahlady/`).
+- **Súbory** – zoznam súborov v podpriečinkoch a na čo slúžia (`scad/`, `stl/`, `3mf/`, `vyroba/`, `nahlady/`).
 - **Výsledky tlače** – čas a gramy zo slicera, poznámky z tlače a zmeny, ktoré z nich vyplynuli (dopĺňaj priebežne).
 
 ## Renderovanie a kontrola (Claude Code)

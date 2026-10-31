@@ -12,7 +12,7 @@ Parametrické stohovateľné košíky na cyklo oblečenie do skrine a lišta, kt
 | `scad/lista.scad`, `scad/lista.json` | vodiaca lista – model a sady parametrov |
 | `stl/kosik_<sirka>_<stoh_kusov>.stl` | exporty: `250_1/2/3` = šírka 250 pre stoh 1/2/3 kusy, `180_1`, `200_1` = užšie košíky (výška 250, 1 kus) |
 | `stl/lista.stl` | export vodiacej lišty |
-| `stl/kosik.3mf` | projekt z Bambu Studia (nastavenia slicera) |
+| `3mf/kosik.3mf` | projekt z Bambu Studia (nastavenia slicera) |
 | `vyroba/vyrobny-checklist-kosiky.xlsx` | čo je vytlačené, čo zostáva, kontroly pred/po tlači |
 | `nahlady/kosik.png`, `nahlady/lista.png` | náhľady z OpenSCAD |
 
