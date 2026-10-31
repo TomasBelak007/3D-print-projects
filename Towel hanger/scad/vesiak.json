@@ -1,0 +1,35 @@
+{
+    "parameterSets": {
+        "original_fusion": {
+            "pocet_kolikov": "1",
+            "roztec": "25",
+            "vyska_dosky": "35",
+            "priemer_kolika": "6",
+            "dlzka_kolika": "31.6",
+            "uhol_kolika": "45",
+            "r_zaoblenia": "3",
+            "posun_kolika": "1.87"
+        },
+        "3_koliky": {
+            "pocet_kolikov": "3",
+            "roztec": "25",
+            "vyska_dosky": "35",
+            "priemer_kolika": "6",
+            "dlzka_kolika": "31.6",
+            "uhol_kolika": "45",
+            "r_zaoblenia": "3",
+            "posun_kolika": "0"
+        },
+        "velky_1": {
+            "pocet_kolikov": "1",
+            "roztec": "30",
+            "vyska_dosky": "50",
+            "priemer_kolika": "8",
+            "dlzka_kolika": "45",
+            "uhol_kolika": "50",
+            "r_zaoblenia": "4",
+            "posun_kolika": "0"
+        }
+    },
+    "fileFormatVersion": "1"
+}
