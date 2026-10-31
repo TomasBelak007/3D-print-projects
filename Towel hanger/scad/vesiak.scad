@@ -32,7 +32,7 @@ hrubka_dosky = 3.0;     // [2:0.2:8]
 priemer_kolika = 6;     // [4:0.5:15]
 // Dlzka kolika pozdlz osi – od povrchu dosky po spicku gule
 dlzka_kolika = 31.6;    // [10:0.5:100]
-// Uhol kolika od steny (90 = kolmo zo steny). Pod 45 st. by bol previs
+// Uhol kolika od steny (90 = kolmo zo steny). Min. 45 st. (PETG 50 st.), mensi sa zdvihne
 uhol_kolika = 45;       // [45:1:90]
 // Polomer zaoblenia pri koreni kolika
 r_zaoblenia = 3;        // [0:0.5:8]
@@ -81,7 +81,8 @@ previs_max = material == "PETG" ? 40 : 45;          // od zvislice
 t     = vrstvy(hrubka_dosky);                       // hrubka dosky
 sirka = pocet_kolikov * roztec;                     // sirka dosky
 r     = priemer_kolika / 2;
-a     = uhol_kolika;                                // od roviny steny
+a_min = 90 - previs_max;                            // najmensi uhol bez previsu
+a     = max(uhol_kolika, a_min);                    // od roviny steny (PETG: zdvihne sa na 50)
 f     = r_zaoblenia;
 Lc    = dlzka_kolika - r;                           // od dosky po stred gule
 e     = 0.01;
@@ -106,8 +107,9 @@ kapsa_x  = roztec - 2 * okraj_kapsy;
 kapsa_y  = vyska_dosky - 2 * okraj_kapsy;
 most     = min(kapsa_x, kapsa_y);
 
-assert(a >= 90 - previs_max - 1e-6,
-       str("uhol_kolika pod ", 90 - previs_max, " st. = previs nad ", previs_max, " st. (", material, ")"));
+if (uhol_kolika < a_min)
+    echo(str("POZOR: uhol_kolika ", uhol_kolika, " st. je pre ", material, " malo (previs max. ",
+             previs_max, " st.) – pouzity ", a_min, " st."));
 assert(y_k - dole >= 1, str("kolik presahuje dosku dole – zvacsi vyska_dosky alebo posun_kolika (", y_k - dole, ")"));
 assert(y_k + hore <= vyska_dosky - 1, str("spicka kolika presahuje dosku hore – zvacsi vyska_dosky (", vyska_dosky - y_k - hore, ")"));
 assert(roztec >= priemer_kolika + 2 * f + 2, "roztec je mensia ako kolik so zaoblenim");
@@ -115,7 +117,8 @@ assert(sirka <= podlozka[0] && vyska_dosky <= podlozka[1] && vylozenie <= podloz
        str("Diel sa nezmesti na podlozku H2C ", podlozka));
 
 echo(str("doska ", sirka, " x ", vyska_dosky, " x ", t, " mm (", round(t / vrstva), " vrstiev)",
-         " | kolikov ", pocet_kolikov, " | vylozenie zo steny ", vylozenie, " mm",
+         " | kolikov ", pocet_kolikov, " | uhol kolika ", a, " st.",
+         " | vylozenie zo steny ", vylozenie, " mm",
          " | koren kolika ", y_k, " mm od spodnej hrany",
          " | plast z perimetrov ", plast, " mm"));
 if (kapsa) {

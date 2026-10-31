@@ -27,14 +27,14 @@ Malý vešiak, ktorý sa **lepí na stenu obojstrannou páskou**. Z dosky vychá
 | `hrubka_dosky` | 3,0 mm | zaokrúhli sa na násobok vrstvy (15 vrstiev) |
 | `priemer_kolika` | 6 mm | |
 | `dlzka_kolika` | 31,6 mm | pozdĺž osi, od povrchu dosky po špičku gule |
-| `uhol_kolika` | 45° | od steny; 90 = kolmo. Menej ako 45° nejde (previs), pri PETG min. 50° |
+| `uhol_kolika` | 45° | od steny; 90 = kolmo. Min. 45°, pri PETG 50° – menší uhol sa automaticky zdvihne (ECHO vypíše POZOR) |
 | `r_zaoblenia` | 3 mm | zaoblenie pri koreni kolíka |
 | `posun_kolika` | 0 mm | posun kolíka hore/dole; 0 = pôdorys kolíka v strede dosky |
 | `kapsa` | áno | kapsa na pásku na zadnej strane, 1 mm hlboká, okraj 2 mm |
 
 Odvodené hodnoty (ECHO, predvolené): doska 25 × 35 × 3 mm, **vyloženie zo steny 26,2 mm**, koreň kolíka 8,6 mm od spodnej hrany, kapsa 21 × 31 × 1 mm.
 
-Kontroly (`assert`): kolík ani špička nepresahujú dosku, uhol kolíka nespôsobí previs (podľa materiálu), rozteč je väčšia ako kolík so zaoblením, nad kapsou ostanú aspoň 4 vrstvy, diel sa zmestí na podložku.
+Kontroly (`assert`): kolík ani špička nepresahujú dosku, rozteč je väčšia ako kolík so zaoblením, nad kapsou ostanú aspoň 4 vrstvy, diel sa zmestí na podložku.
 
 ## Ako vznikol z originálu
 Rozmery som zmeral z pôvodného STL (rezy v rôznych výškach, vrcholy siete):
@@ -59,7 +59,7 @@ Sada `original_fusion` dáva v rezoch rovnaké rozmery ako originál (rozdiel do
 ## Nastavenie slicera
 0,4 tryska · 0,20 vrstva · **wall loops 4** · top/bottom 5/4 · výplň 15 % gyroid · PLA · hladká PEI doska (rovný zadný povrch) · podpery nie · doskou na podložku.
 
-PETG (vlhká kúpeľňa) ide tiež, ale potrebuje `uhol_kolika ≥ 50` (previs max. 40°).
+PETG (vlhká kúpeľňa) ide tiež. Pri prepnutí `material = "PETG"` sa kolík sám zdvihne na 50° od steny (previs max. 40°), vyloženie zo steny narastie z 26,2 na 27,9 mm.
 
 ## Výsledky tlače
 | Dátum | Sada | Materiál | Čas / g | Výsledok |
