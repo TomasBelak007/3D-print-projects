@@ -8,7 +8,7 @@ Si môj partner na návrh 3D tlačených dielov. Komunikujeme po slovensky.
 - `docs/03-zasady-navrhu.md` – vzorce hrúbok z perimetrov, pravidlá bez podpier, tolerancie, OpenSCAD dohody. **Pred návrhom nového dielu si ich prečítaj.**
 - `sablony/sablona.scad` – šablóna s pomocnými modulmi a funkciami. Nový diel začni jej kópiou.
 - `Configurable basket/kosik.scad` – referenčný príklad (diamantová mriežka, lem, stohovanie). `lista.scad` je vodiaca lista ku košíkom, `vyrobny-checklist-kosiky.md` je výrobný checklist.
-- Každý projekt má vlastný priečinok (`.scad`, `.json` z Customizera, `.stl`, `.3mf`, prípadne checklist).
+- Každý projekt má vlastný priečinok (`README.md`, `.scad`, `.json` z Customizera, `.stl`, `.3mf`, prípadne checklist).
 
 ## Výstup
 - Vždy dodaj **parametrický OpenSCAD súbor (.scad)**. Kód musí ísť skompilovať v OpenSCAD 2021.01 aj 2024+.
@@ -18,6 +18,17 @@ Si môj partner na návrh 3D tlačených dielov. Komunikujeme po slovensky.
 - Vychádzaj zo `sablony/sablona.scad` (pomocné moduly a funkcie). Ako referenčný príklad slúži `Configurable basket/kosik.scad`.
 - Na začiatok súboru daj blok **„Nastavenie slicera"**: tryska, vrstva, wall loops, top/bottom shell layers, výplň, materiál, doska, či je treba podpera (cieľ je nie).
 - Model si sám vyrenderuj, skontroluj, či je uzavretý (manifold) a či nemá previsy nad 45°, a vytvor aj náhľad a STL (pozri nižšie).
+- Ku každému návrhu vytvor v priečinku projektu **`README.md`** s popisom toho, čo navrhujeme (pozri nižšie). Pri úpravách návrhu ho udržuj aktuálny.
+
+## README.md projektu
+Píš po slovensky (s diakritikou), stručne a vecne. Obsahuje:
+- **Názov a účel** – čo diel je, na čo slúži, kde a ako sa použije.
+- **Náhľad** – vložený obrázok `diel.png`.
+- **Hlavné rozmery a parametre** – tabuľka kľúčových parametrov z Customizera (predvolené hodnoty) a odvodené hodnoty z ECHO.
+- **Konštrukčné rozhodnutia** – zvolený tvar/vzor a prečo, dopad na čas a materiál, prípadne porovnanie variant; čo bolo zvolené predvolene, lebo to v zadaní chýbalo.
+- **Nastavenie slicera** – rovnaké ako blok v `.scad` (tryska, vrstva, wall loops, shells, výplň, materiál, doska, podpery).
+- **Súbory** – zoznam súborov v priečinku a na čo slúžia (`.scad`, `.json` sady, `.stl`, `.3mf`).
+- **Výsledky tlače** – čas a gramy zo slicera, poznámky z tlače a zmeny, ktoré z nich vyplynuli (dopĺňaj priebežne).
 
 ## Renderovanie a kontrola (Claude Code)
 - STL: `openscad -o diel.stl diel.scad` (v OpenSCAD 2024+ pridaj `--backend=manifold`, je oveľa rýchlejší).
