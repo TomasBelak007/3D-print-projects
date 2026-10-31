@@ -31,7 +31,7 @@ The M5 bolt axis is **perpendicular to the light axis**, so the light tilts up/d
 ## Print settings
 
 - Orientation: flat side of the band on the bed, light axis vertical
-- **No supports** – all walls are vertical, the M5 hole is a teardrop (tip up) and the rounded prong ends have a 45° foot, so nothing overhangs more than 45°
+- **No supports** – all walls are vertical, the rounded prong ends have a 45° foot; the small round M5 hole prints fine without supports
 - Material: **ASA** (recommended – UV and heat resistant, doesn't yellow or soften in the sun). PETG works. **Do not use PLA – it cracks when snapping on.**
 - ASA needs an enclosed, heated chamber, otherwise layers can split at the mouth where the part is stressed the most
 - 0.2 mm layers, 4–5 perimeters, 40 % infill, brim

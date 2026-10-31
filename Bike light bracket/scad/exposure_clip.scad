@@ -10,7 +10,7 @@
 //    Vypln ............. 40 % gyroid      Brim ........... ano
 //    Material .......... ASA (AMS HT)     Doska .......... Textured PEI + lepidlo
 //    Komora ............ zavreta, 50–65 st. C (inak praska v usti objimky)
-//    Podpery ........... NIE – steny zvisle, diera M5 slzova, pod koncom zubov 45 st. patka
+//    Podpery ........... NIE – steny zvisle, pod koncom zubov 45 st. patka, diera M5 okruhla
 //    Orientacia ........ plochou stranou objimky na dosku, os svetla zvisle
 //
 //  PLA nepouzivat – pri nacvaknuti praska. PETG ide.
@@ -91,15 +91,6 @@ module profil_c() {
         }
 }
 
-// diera so spickou hore (pre vodorovne osi), d = priemer
-module slza(d, uhol = 45) {
-    r = d/2;
-    hull() {
-        circle(r = r);
-        translate([0, r / sin(uhol)]) square(e, center = true);
-    }
-}
-
 // Jeden GoPro zub: profil "stadion" v rovine YZ, hrubka v smere X.
 // V 2D profile je x = z_zuba - Z, teda x = r_zuba je doska (Z = 0).
 module zub(x_off) {
@@ -125,8 +116,8 @@ module drziak() {
         }
         // otvor pre telo svetla (orezie aj krky zubov, ktore siahaju dnu)
         translate([0, 0, -1]) cylinder(r = r_in, h = sirka + 2);
-        // diera M5, os v smere X, spicka hore (bez mosta)
-        translate([-10, y_os, z_zuba]) rotate([90, 0, 90]) linear_extrude(20) slza(diera_skrutky);
+        // diera M5, os v smere X (okruhla, maly strop H2C zvladne)
+        translate([-10, y_os, z_zuba]) rotate([0, 90, 0]) cylinder(d = diera_skrutky, h = 20);
     }
 }
 
