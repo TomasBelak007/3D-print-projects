@@ -49,11 +49,11 @@ GoPro úchyt (konštanty, netreba meniť): 2 zuby × 2,9 mm, medzera 3,2 mm, R 7
 - **Orientácia** – objímka leží plochou stranou na doske, os svetla je zvislá. Vrstvy idú pozdĺž ohybu „C“, takže klip pri nacvaknutí nepraská medzi vrstvami.
 - **GoPro zub zarovno s doskou** – zub je široký 15 mm ako objímka a začína na Z = 0, takže diel stojí celou plochou na doske.
 - **Materiál ASA** – odolá UV aj teplu, na slnku nemäkne ani nežltne. PETG ide tiež. **PLA nie** – pri nacvaknutí praská (model to stráži cez `assert`).
-- **Previsy** (kontrola STL): dva malé úseky nad 45°, ktoré sa v praxi tlačia bez podpier:
-  - spodok zaobleného konca GoPro zubov – do výšky 2,2 mm nad doskou, ~29 mm²,
-  - strop diery M5 (Ø 5,3, krátky most v zube hrubom 2,9 mm).
+- **Bez previsov nad 45°** (kontrola STL):
+  - diera M5 je **slzová so špičkou hore** – kruh Ø 5,3 s 45° strechou, takže nevzniká most. Skrutka dosadá na spodnú polovicu diery, funkcia sa nemení,
+  - pod zaobleným koncom GoPro zubov je **45° pätka** (dotyčnica v 45° bode kruhu, siaha 3,1 mm za os, do výšky 2,2 mm). Spodný roh zuba tak vytŕča ~0,6 mm za kruh R 7,5. Leží len v hrúbke vlastných zubov, kam protikus nezasahuje.
 
-  Obe by sa dali odstrániť (slzová diera, 45° pätka pod koncom zuba), ale menilo by to otestovaný GoPro tvar, preto som ich nechal.
+  Pôvodný export `EXP18_GoPro_clip_A_snap_90_fit050_w30.stl` ešte má okrúhlu dieru a zub bez pätky.
 
 ## Nastavenie slicera
 0,4 tryska · 0,20 vrstva · **wall loops 4** · top/bottom 4/4 · výplň 40 % gyroid · **ASA (AMS HT)** · Textured PEI + lepidlo · **brim** · komora zavretá a vyhrievaná 50–65 °C (inak sa vrstvy v ústach, kde je najväčšie napätie, môžu rozlepiť) · podpery nie.

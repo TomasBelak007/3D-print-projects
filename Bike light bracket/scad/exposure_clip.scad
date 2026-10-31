@@ -10,7 +10,7 @@
 //    Vypln ............. 40 % gyroid      Brim ........... ano
 //    Material .......... ASA (AMS HT)     Doska .......... Textured PEI + lepidlo
 //    Komora ............ zavreta, 50–65 st. C (inak praska v usti objimky)
-//    Podpery ........... NIE – vsetky steny zvisle, most len diera M5
+//    Podpery ........... NIE – steny zvisle, diera M5 slzova, pod koncom zubov 45 st. patka
 //    Orientacia ........ plochou stranou objimky na dosku, os svetla zvisle
 //
 //  PLA nepouzivat – pri nacvaknuti praska. PETG ide.
@@ -91,14 +91,28 @@ module profil_c() {
         }
 }
 
-// Jeden GoPro zub: profil "stadion" v rovine YZ, hrubka v smere X
+// diera so spickou hore (pre vodorovne osi), d = priemer
+module slza(d, uhol = 45) {
+    r = d/2;
+    hull() {
+        circle(r = r);
+        translate([0, r / sin(uhol)]) square(e, center = true);
+    }
+}
+
+// Jeden GoPro zub: profil "stadion" v rovine YZ, hrubka v smere X.
+// V 2D profile je x = z_zuba - Z, teda x = r_zuba je doska (Z = 0).
 module zub(x_off) {
+    c = r_zuba / sqrt(2);
     translate([x_off, 0, z_zuba])
         rotate([0, 90, 0])             // sirka X -> Z, hrubka Z -> +X
             linear_extrude(hrubka_zuba)
                 union() {
                     translate([-sirka_zuba / 2, y_krk]) square([sirka_zuba, y_os - y_krk]);
                     translate([0, y_os]) circle(r = r_zuba);
+                    // 45 st. patka pod zaoblenym koncom (dotycnica v 45 st. bode kruhu)
+                    translate([0, y_os]) polygon([[0, 0], [r_zuba, 0],
+                        [r_zuba, 2*c - r_zuba], [c, c]]);
                 }
 }
 
@@ -111,8 +125,8 @@ module drziak() {
         }
         // otvor pre telo svetla (orezie aj krky zubov, ktore siahaju dnu)
         translate([0, 0, -1]) cylinder(r = r_in, h = sirka + 2);
-        // diera M5, os v smere X
-        translate([-10, y_os, z_zuba]) rotate([0, 90, 0]) cylinder(d = diera_skrutky, h = 20);
+        // diera M5, os v smere X, spicka hore (bez mosta)
+        translate([-10, y_os, z_zuba]) rotate([90, 0, 90]) linear_extrude(20) slza(diera_skrutky);
     }
 }
 
