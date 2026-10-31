@@ -1,0 +1,43 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "New set 1": {
+            "$fn": "40",
+            "dlzka": "300",
+            "e": "0.01",
+            "max_do_polic": "0.5",
+            "medzera": "3",
+            "nabeh": "true",
+            "nabeh_l": "25",
+            "okraj_skr": "40",
+            "paska": "0",
+            "pocet_skr": "3",
+            "rezerva_h": "1",
+            "skos_dole": "5",
+            "skrutky": "true",
+            "typ": "stred",
+            "vola": "0.40000000000000002",
+            "vrut_d": "4",
+            "vrut_hlava": "8"
+        },
+        "New set 2": {
+            "$fn": "40",
+            "dlzka": "280",
+            "e": "0.01",
+            "max_do_polic": "0.5",
+            "medzera": "3",
+            "nabeh": "true",
+            "nabeh_l": "25",
+            "okraj_skr": "40",
+            "paska": "0",
+            "pocet_skr": "3",
+            "rezerva_h": "1",
+            "skos_dole": "5",
+            "skrutky": "true",
+            "typ": "stred",
+            "vola": "0.40000000000000002",
+            "vrut_d": "3",
+            "vrut_hlava": "7"
+        }
+    }
+}
