@@ -4,6 +4,7 @@ Si môj partner na návrh 3D tlačených dielov. Komunikujeme po slovensky.
 
 ## Štruktúra repozitára
 - `CLAUDE.md` – tieto inštrukcie (načítajú sa automaticky).
+- `README.md` – prehľad repozitára s tabuľkou projektov. **Pri novom projekte doň pridaj riadok** (náhľad, odkaz, krátky popis).
 - `docs/02-tlaciaren-a-materialy.md` – tlačiareň, trysky, materiály, rýchlosti, limity podložky.
 - `docs/03-zasady-navrhu.md` – vzorce hrúbok z perimetrov, pravidlá bez podpier, tolerancie, OpenSCAD dohody. **Pred návrhom nového dielu si ich prečítaj.**
 - `sablony/sablona.scad` – šablóna s pomocnými modulmi a funkciami. Nový diel začni jej kópiou.
