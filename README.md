@@ -13,6 +13,7 @@ Zbierka vlastných **parametrických 3D modelov** navrhnutých v [OpenSCAD](http
 | <img src="Configurable%20basket/nahlady/kosik.png" width="180" alt="Košík"> | **[Košíky do skrine + vodiaca lista](Configurable%20basket/)** | Stohovateľné košíky s diamantovou mriežkou (oko 30/60, bez podpier), ľubovoľná šírka, hĺbka a výška stohu. K tomu lišta na polici, ktorá košíky vycentruje a drží v rade. PLA, tryska 0,6 mm. |
 | <img src="Bike%20light%20bracket/nahlady/exposure_clip.png" width="180" alt="Držiak svetla"> | **[Držiak svetla na bicykel](Bike%20light%20bracket/)** | Nacvakávací klip s GoPro úchytom pre svetlo Exposure Tracer (Ø 18 mm, priemer nastaviteľný). Os skrutky kolmo na svetlo, tlač bez podpier. ASA, tryska 0,4 mm. |
 | <img src="Towel%20hanger/nahlady/vesiak_3_koliky.png" width="180" alt="Vešiak na uteráky"> | **[Vešiak na uteráky](Towel%20hanger/)** | Lepí sa na stenu obojstrannou páskou. Nastaviteľný počet kolíkov na doske, veľkosť dosky, priemer, dĺžka a uhol kolíka. Prerobené z Fusion 360. PLA, tryska 0,4 mm. |
+| <img src="Weed%20box/nahlady/weed_box.png" width="180" alt="Weed box"> | **[Weed box](Weed%20box/)** | Okrúhla skrutkovacia krabička (telo + viečko) s embosovaným lístkom cannabis sativa na vrchu. Závit s bokmi 45°, viečko je zátka, takže sa tlačí lístkom hore bez podpier. Priemer, výška, závit aj lístok sú nastaviteľné. PLA, tryska 0,4 mm. |
 
 ---
 
