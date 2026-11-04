@@ -30,6 +30,7 @@ otacky       = 1.5;  // kolko otacok ma zavit (= kolko sa skrutkuje)
 vola_zavitu  = 0;    // radialna vola a vola na boku; 0 = automaticky podla trysky a materialu
 
 /* [Listok] */
+pocet_listkov  = 7;    // [7, 9] pocet cipov listka
 velkost_listka = 52;   // od konca stopky po spicku stredneho listka
 vyska_listka   = 0.6;  // vyska embosu, zaokruhli sa na nasobok vrstvy
 zilky          = true; // stredna zilka vyrezana vo vacsich listkoch
@@ -125,6 +126,7 @@ assert(wall_loops >= 2 && ryha_h < lem, "Stena je tenka na sedlo alebo ryhy, tre
 assert(zs_t - B/2 > dno + r_dno, str("Telo je prilis nizke: zavit zasahuje do zaoblenia pri dne, min. vyska = ",
        vyska + dno + r_dno - (zs_t - B/2)));
 assert(zs_t + (otacky*stupanie) + B/2 < H_t - kuz_t, "Rebro tela zasahuje do sedla");
+assert(pocet_listkov == 7 || pocet_listkov == 9, "pocet_listkov musi byt 7 alebo 9");
 assert(velkost_listka <= 2 * (r_out - skos_h - 1.5) && velkost_listka >= 20,
        "Listok sa nezmesti na vicko alebo je prilis maly na detail");
 
@@ -170,7 +172,7 @@ module rebro(r_koren, z0, smer) {
 }
 
 // =====================================================================
-//  LISTOK – 2D obrys, 7 pilovitych listkov
+//  LISTOK – 2D obrys, 7 alebo 9 pilovitych listkov
 // =====================================================================
 
 // relativna sirka listka pozdlz osi, t = 0..1, maximum okolo 0.3
@@ -189,7 +191,9 @@ module lupen(L, W, n) {
 }
 
 // [uhol od osi, dlzka, sirka, zuby] – relativne k L_c
-listky = [[0, 1.00, 0.30, 8], [32, 0.88, 0.27, 7], [66, 0.64, 0.22, 6], [115, 0.32, 0.14, 4]];
+listky_7 = [[0, 1.00, 0.30, 8], [32, 0.88, 0.27, 7], [66, 0.64, 0.22, 6], [115, 0.32, 0.14, 4]];
+listky_9 = [[0, 1.00, 0.25, 8], [25, 0.92, 0.23, 8], [51, 0.76, 0.21, 7], [80, 0.54, 0.17, 6], [122, 0.28, 0.12, 4]];
+listky = pocet_listkov == 9 ? listky_9 : listky_7;
 
 module listok_2d() {
     r_o = 0.45 * w_linky;     // odstrani prvky tensie ako ~1 linka

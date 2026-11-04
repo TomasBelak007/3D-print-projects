@@ -16,7 +16,8 @@
             "tryska": "0.4",
             "vrstva": "0.2",
             "wall_loops": "3",
-            "material": "PLA"
+            "material": "PLA",
+            "pocet_listkov": "7"
         },
         "mala_50x45": {
             "priemer": "50",
@@ -33,7 +34,8 @@
             "tryska": "0.4",
             "vrstva": "0.2",
             "wall_loops": "3",
-            "material": "PLA"
+            "material": "PLA",
+            "pocet_listkov": "7"
         },
         "velka_90x80": {
             "priemer": "90",
@@ -50,7 +52,8 @@
             "tryska": "0.4",
             "vrstva": "0.2",
             "wall_loops": "3",
-            "material": "PLA"
+            "material": "PLA",
+            "pocet_listkov": "7"
         },
         "petg_70x60": {
             "priemer": "70",
@@ -67,7 +70,8 @@
             "tryska": "0.4",
             "vrstva": "0.2",
             "wall_loops": "3",
-            "material": "PETG"
+            "material": "PETG",
+            "pocet_listkov": "7"
         },
         "tryska06_70x60": {
             "priemer": "70",
@@ -84,7 +88,26 @@
             "tryska": "0.6",
             "vrstva": "0.3",
             "wall_loops": "2",
-            "material": "PLA"
+            "material": "PLA",
+            "pocet_listkov": "7"
+        },
+        "listok9_70x60": {
+            "priemer": "70",
+            "vyska": "60",
+            "stupanie": "4",
+            "hlbka_zavitu": "1.2",
+            "otacky": "1.5",
+            "vola_zavitu": "0",
+            "velkost_listka": "52",
+            "vyska_listka": "0.6",
+            "zilky": "true",
+            "diel": "oba",
+            "ryhy": "true",
+            "tryska": "0.4",
+            "vrstva": "0.2",
+            "wall_loops": "3",
+            "material": "PLA",
+            "pocet_listkov": "9"
         }
     }
 }

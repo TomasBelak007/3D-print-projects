@@ -1,12 +1,12 @@
 # Weed box – okrúhla krabička so závitom
 
-Skrutkovacia krabička z dvoch dielov: **telo** s vnútorným závitom a **viečko** s vonkajším závitom, na ktorom je navrchu embosovaný lístok cannabis sativa (7 pílovitých lístkov). Zatvorená je hladký valec, viečko má rovnaký priemer ako telo a je oddelené len úzkou drážkou. Oba diely sa tlačia bez podpier.
+Skrutkovacia krabička z dvoch dielov: **telo** s vnútorným závitom a **viečko** s vonkajším závitom, na ktorom je navrchu embosovaný lístok cannabis sativa (7 alebo 9 pílovitých lístkov, voľba v Customizeri). Zatvorená je hladký valec, viečko má rovnaký priemer ako telo a je oddelené len úzkou drážkou. Oba diely sa tlačia bez podpier.
 
 ![Telo a viečko](nahlady/weed_box.png)
 
-| Rez zatvorenej krabičky | Lístok zhora |
-|---|---|
-| ![Rez](nahlady/weed_box_rez.png) | ![Lístok](nahlady/weed_box_listok.png) |
+| Rez zatvorenej krabičky | Lístok, 7 cípov | Lístok, 9 cípov |
+|---|---|---|
+| ![Rez](nahlady/weed_box_rez.png) | ![Lístok 7](nahlady/weed_box_listok.png) | ![Lístok 9](nahlady/weed_box_listok_9.png) |
 
 ## Hlavné rozmery a parametre
 | Parameter | Predvolené | Význam |
@@ -17,6 +17,7 @@ Skrutkovacia krabička z dvoch dielov: **telo** s vnútorným závitom a **vieč
 | `hlbka_zavitu` | 1,2 mm | radiálna výška rebra |
 | `otacky` | 1,5 | dĺžka závitu = koľko sa viečko skrutkuje |
 | `vola_zavitu` | 0 = auto | vôľa radiálne aj na boku rebra, auto podľa trysky a materiálu |
+| `pocet_listkov` | 7 | počet cípov lístka, 7 alebo 9 |
 | `velkost_listka` | 52 mm | od konca stopky po špičku |
 | `vyska_listka` | 0,6 mm | výška embosu, zaokrúhli sa na násobok vrstvy |
 | `zilky` | áno | stredná žilka vyrezaná vo väčších lístkoch |
@@ -31,7 +32,7 @@ Odvodené hodnoty (ECHO, predvolená sada):
 - závit: boky 45°, vôľa 0,30 mm (axiálne 0,42 mm na bok), vrchol rebra 0,68 mm, päta 3,08 mm, záber 0,9 mm,
 - **užitočný objem ~135 ml** (Ø 65,4 × 40,2 mm pod zátkou).
 
-Sady v `scad/weed_box.json`: `predvolena_70x60`, `mala_50x45` (~41 ml), `velka_90x80` (~345 ml), `petg_70x60`, `tryska06_70x60`.
+Sady v `scad/weed_box.json`: `predvolena_70x60`, `mala_50x45` (~41 ml), `velka_90x80` (~345 ml), `petg_70x60`, `tryska06_70x60`, `listok9_70x60` (9-cípy lístok).
 
 ### Ladenie závitu
 - Viečko ide ťažko alebo drhne → `vola_zavitu` 0,35–0,40.
@@ -53,13 +54,13 @@ Sady v `scad/weed_box.json`: `predvolena_70x60`, `mala_50x45` (~41 ml), `velka_9
 - **Kužeľové sedlo 45° namiesto rovnej dosadacej plochy.** Spodok okraja viečka musí byť šikmý, aby sa tlačil bez podpier, preto je rovnako šikmé aj ústie tela. Slúži ako doraz aj ako nábeh pri nasadzovaní. Od hornej hrany tela ostáva drážka hlboká 1,55 mm, ktorá zároveň opticky oddeľuje diely.
 - **Stena 6 liniek (wall loops 3)** namiesto 4 liniek, aby sa telo pri skrutkovaní neovalilo a ústie sedla ostalo pevné. Stojí to ~10 g navyše.
 - **Zaoblenie R 6 pri dne** – obsah sa dá ľahko vybrať, tlačí sa to bez previsu.
-- **Lístok** je vlastný 2D obrys v OpenSCAD, nie import. Prvky tenšie ako ~1 linka sa odstránia (`offset`), aby slicer nevytváral prázdne miesta. Max. polomer lístka je 26,3 mm, od okraja ostáva ~8 mm.
+- **Lístok** je vlastný 2D obrys v OpenSCAD, nie import. Pri 9 cípoch sú lístky užšie a hustejšie, aby sa neprekrývali. Prvky tenšie ako ~1 linka sa odstránia (`offset`), aby slicer nevytváral prázdne miesta. Max. polomer lístka je 26,3 mm (9 cípov 26,5 mm), od okraja ostáva ~8 mm.
 - **Dvojfarebná verzia je lacná.** Lístok začína na z = 17,6 mm, výmena filamentu je jedna, len na posledné 3 vrstvy (v Bambu Studiu zmena filamentu v danej vrstve).
 - **Zvolené predvolene, lebo to v zadaní chýbalo:** priemer 70 mm, výška 60 mm, PLA, tryska 0,4 (závit a lístok potrebujú detail), 1,5 otáčky.
 - Krabička nie je vzduchotesná, závit z FDM netesní. Ak má držať vôňu, treba dať pod viečko tesnenie.
 
 ## Kontrola návrhu
-Vykonané pre všetkých 5 sád v JSON:
+Vykonané pre všetkých 6 sád v JSON:
 - render bez chýb, `assert` prešli, STL uzavreté (manifold), 1 teleso na diel,
 - **previsy z normál STL:** max. 45,00° (PETG 40,00°), žiadna plocha nad limitom okrem plochy na doske,
 - **sedenie závitu (`diel="prienik"`):** prienik tela a viečka je nulový v zatvorenej polohe aj pri odskrutkovaní o 15–900° (14 polôh).
@@ -76,10 +77,12 @@ Kód je napísaný pre OpenSCAD 2021.01 aj 2024+, skúšaný bol vo verzii 2026.
 | `scad/weed_box.scad` | hlavný model, oba diely |
 | `scad/weed_box.json` | sady parametrov z Customizera |
 | `stl/weed_box_telo.stl` | telo, predvolená sada |
-| `stl/weed_box_vicko.stl` | viečko, predvolená sada |
+| `stl/weed_box_vicko.stl` | viečko, predvolená sada (7 cípov) |
+| `stl/weed_box_vicko_9.stl` | viečko s 9-cípym lístkom |
 | `nahlady/weed_box.png` | telo a viečko vedľa seba |
 | `nahlady/weed_box_rez.png` | rez zatvorenej krabičky |
-| `nahlady/weed_box_listok.png` | viečko zhora |
+| `nahlady/weed_box_listok.png` | viečko zhora, 7 cípov |
+| `nahlady/weed_box_listok_9.png` | viečko zhora, 9 cípov |
 
 Priečinky `3mf/` a `vyroba/` pribudnú po prvej tlači.
 
