@@ -1,10 +1,13 @@
 // =====================================================================
 //  Parametricky kosik do skrine – diamantova mriezka
-//  Bambu Lab H2C, PLA, tryska 0.6 mm, vrstva 0.3 mm
-//  Slicer: wall loops 4, bottom shells 7, podpery nie
+//  Bambu Lab H2C, PLA, podpery nie
+//  Slicer podla parametrov v sekcii Tlac (ECHO vypise presne hodnoty):
+//    wall loops = linky_steny (predvolene 4)
+//    0.6 mm: vrstva 0.30, bottom shells 7 (alebo vrstvy_dna)
+//    0.8 mm High Flow: vrstva 0.40, bottom shells 5 (alebo vrstvy_dna)
 //
-//  Menis iba SIRKA / HLBKA / VYSKA. Vsetko ostatne sa dopocita.
-//  Hrubka steny, sirka rebier mriezky a velkost oka su konstantne –
+//  Menis iba SIRKA / HLBKA / VYSKA a sekciu TLAC. Vsetko ostatne sa dopocita.
+//  Hrubka steny a sirka rebier zavisia od trysky a liniek, nie od velkosti –
 //  pri vacsom kosiku pribudnu oka, nezvacsia sa.
 // =====================================================================
 
@@ -12,7 +15,8 @@
 sirka = 250;   // X – predna stena (s uchytom)
 hlbka = 300;   // Y – do skrine
 vyska = 250;   // Z – celkova vyska stohu (pri stoh_kusov = 1 vyska kosika)
-stoh_kusov = 1; // [1, 2, 3] kolko kosikov na sebe ma dat spolu vyska
+// kolko kosikov na sebe ma dat spolu vyska
+stoh_kusov = 1; // [1, 2, 3]
 
 /* [Volby] */
 uchyt        = true;   // vyrez na prsty v prednej aj zadnej stene
@@ -27,14 +31,28 @@ oko_y      = 60;         // cielova roztec ok zvisle – pomer 1:2
                          // -> hrany ~27 st. od zvislice, bez podpier;
                          // 30/60 = o ~20 % menej materialu ako 24/48
 
+/* [Tlac] */
+// priemer trysky, urci sirku linky a vrstvu
+tryska = 0.6; // [0.6, 0.8]
+// linky cez hrubku steny = WALL LOOPS v sliceri
+linky_steny = 4; // [2, 3, 4]
+// vrstvy dna = BOTTOM SHELLS v sliceri (0.6: 7 vrstiev, 0.8: 5 vrstiev)
+vrstvy_dna = 0; // [0:Podla trysky, 3:3 vrstvy, 4:4 vrstvy, 5:5 vrstiev, 6:6 vrstiev, 7:7 vrstiev]
 
 /* [Konstanty – netreba menit] */
-// 4 linky (wall loops 2 na kazdy obrys) pri linke 0.62 a vrstve 0.3 ~ 2.3 mm
-stena      = 2.3;
-// rebro = 2 x stena = 8 liniek -> v sliceri WALL LOOPS = 4,
+tryska_08  = tryska > 0.7;
+vrstva     = tryska_08 ? 0.4 : 0.3;
+w_linky    = tryska_08 ? 0.82 : 0.62;            // sirka linky
+s_linky    = w_linky - vrstva * (1 - PI/4);      // roztec susednych liniek
+// stena z celych liniek: T(n) = w + (n - 1) * s, zaokruhlene na 0.01 mm
+// (0.6 a 4 linky ostava 2.3 ako na uz vytlacenych kosikoch, vzorec dava 2.29)
+stena      = (!tryska_08 && linky_steny == 4) ? 2.3
+           : round((w_linky + (linky_steny - 1) * s_linky) * 100) / 100;
+// rebro = 2 x stena -> dvojnasobok liniek, v sliceri WALL LOOPS = linky_steny,
 // rebro vyplnia len perimetre z oboch dier = rychle a pevne
 rebro      = 2 * stena;
-dno        = 2.1;        // 7 vrstiev po 0.3
+vrstiev_dna = vrstvy_dna > 0 ? vrstvy_dna : (tryska_08 ? 5 : 7);
+dno        = vrstiev_dna * vrstva;
 zaoblenie_oka = 1.2;     // zaoblenie rohov diamantu
 r_roh      = 8;          // vonkajsi polomer rohov kosika
 okraj_roh  = r_roh + 4;  // plny zvisly stlpik v rohu
@@ -117,6 +135,9 @@ assert(zapad > 0 && zapad < lem, "skos_dole musi byt vacsi ako stena a mensi ako
 h_kosika = (vyska + (stoh_kusov - 1) * zapad) / stoh_kusov;
 echo(str("vyska kosika = ", h_kosika, " mm; stoh ", stoh_kusov, " ks = ",
          stoh_kusov * h_kosika - (stoh_kusov - 1) * zapad, " mm"));
+echo(str("tryska ", tryska, ", vrstva ", vrstva, ", wall loops ", linky_steny,
+         ", bottom shells ", vrstiev_dna, "; stena ", stena, ", rebro ", rebro, ", dno ", dno,
+         ", zapad ", zapad));
 
 zi = skos_dole + stena*sqrt(2) - stena;   // vyska, kde zacina zvisla vnutorna stena
 xi = skos_dole + stena*sqrt(2) - dno;     // odsadenie vnutorneho okraja dna

@@ -31,6 +31,22 @@ Pravidlo: **čo je väčšie ako ~150 mm a nemá jemné detaily, tlač na 0,6 mm
 
 **0,8 High Flow** sa oplatí, keď diel má hrubé steny (≥ 3 mm) a veľký objem, a keď je čas dôležitejší ako vzhľad. Pri tenkostennej mriežke (napr. košíky) je úspora menšia, lebo rýchlosť obmedzujú krátke ťahy a zrýchlenia, nie prietok. Vrstva 0,40 = výrazne viditeľné schody na šikmých a zaoblených plochách, malé diery a detaily pod ~2 mm sa nevykreslia. Šírka linky, vrstvy a prietok sú štartovné hodnoty, over ich v profile Bambu Studia pre konkrétny hotend.
 
+### Poznatky k 0,8 High Flow z košíka
+Príklad z `Configurable basket/scad/kosik.scad`, parameter `tryska = 0.8`. Materiál je odhad z objemu modelu, nie výsledok zo slicera ani z tlače.
+
+| | 0,6 / 0,30 | 0,8 HF / 0,40 |
+|---|---|---|
+| Stena (4 linky) | 2,3 mm | 3,02 mm |
+| Rebro mriežky (8 liniek) | 4,6 mm | 6,04 mm |
+| Dno | 2,1 mm (7 vrstiev) | 2,0 mm (5 vrstiev) |
+| Wall loops / bottom shells | 4 / 7 | 4 / 5 |
+| Mriežka 250 × 300 × 250 | 397 cm³ (~490 g) | 554 cm³ (~690 g), **+40 %** |
+| Plné steny a dno 185 × 190 × 88 | 220 cm³ (~270 g) | 258 cm³ (~320 g), **+18 %** |
+
+- **Rovnaký počet liniek na hrubšej tryske znamená viac materiálu.** Najviac to cíti mriežka, lebo rebrá zhrubnú o 1,4 mm. Plné steny 0,8 tryske sedia lepšie: nárast je menší a nie sú tam krátke ťahy okolo ôk.
+- **Ako znížiť materiál pri mriežke:** `linky_steny = 3` a `vrstvy_dna = 4` dá 380 cm³ (~470 g), teda o 4 % menej ako 0,6. Stena je 2,29 mm a rebro 4,58 mm, skoro ako pri 0,6, dno je 1,6 mm. Samotné oko 36/72 pri 4 linkách dá +33 % oproti 0,6.
+- **Hrubšia stena mení rozmery.** Vnútro košíka je užšie asi o 1,4 mm a stohovací `zapad` klesne z 2,7 na 1,98 mm, takže pri miešaní košíkov z oboch trysiek sa výška stohu na každom spoji líši asi o 0,7 mm.
+
 ## Materiály
 | | PLA | PETG | ASA |
 |---|---|---|---|

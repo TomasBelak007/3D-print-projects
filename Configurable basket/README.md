@@ -1,6 +1,6 @@
 # Košíky do skrine + vodiaca lista
 
-Parametrické stohovateľné košíky na cyklo oblečenie do skrine a lišta, ktorá ich na polici vedie a drží v rade. Všetko PLA, tryska 0,6 mm, bez podpier.
+Parametrické stohovateľné košíky na cyklo oblečenie do skrine a lišta, ktorá ich na polici vedie a drží v rade. Všetko PLA, tryska 0,6 mm (košík aj 0,8 mm High Flow), bez podpier.
 
 ![Košík](nahlady/kosik.png)
 
@@ -23,26 +23,37 @@ STL sú export k dátumu exportu – pri pochybnosti radšej vyrenderuj znova z 
 ## Košík (`kosik.scad`)
 
 ### Ako sa používa
-Menia sa len vonkajšie rozmery **`sirka` × `hlbka` × `vyska`** a **`stoh_kusov`**. Hrúbky, rebrá a veľkosť oka sú konštantné – pri väčšom košíku pribudnú oká, nezväčšia sa.
+Menia sa len vonkajšie rozmery **`sirka` × `hlbka` × `vyska`**, **`stoh_kusov`** a sekcia **Tlac**: `tryska` (0,6 alebo 0,8), `linky_steny` (2–4) a `vrstvy_dna` (Podla trysky alebo 3–7). Hrúbky a rebrá závisia od nich, nie od veľkosti košíka – pri väčšom košíku pribudnú oká, nezväčšia sa.
 
 - `vyska` = celková výška **stohu**, `stoh_kusov` = koľko košíkov na sebe ju má dať. Výška jedného kusu sa dopočíta:
-  `h_kosika = (vyska + (stoh_kusov - 1) * zapad) / stoh_kusov`, kde `zapad = skos_dole - stena = 2,7 mm`.
+  `h_kosika = (vyska + (stoh_kusov - 1) * zapad) / stoh_kusov`, kde `zapad = skos_dole - stena` (predvolene 2,7 mm pri tryske 0,6, 1,98 mm pri 0,8).
   ECHO vypíše výšku košíka aj kontrolnú výšku stohu.
-- Príklady pre stoh 250 mm: 1 ks = 250, 2 ks = 126,35, 3 ks = 85,13. Pre nerovnaký stoh (125 + 127,7) daj `stoh_kusov = 1` a `vyska` priamo.
+- Príklady pre stoh 250 mm a trysku 0,6: 1 ks = 250, 2 ks = 126,35, 3 ks = 85,13. Pre nerovnaký stoh (125 + 127,7) daj `stoh_kusov = 1` a `vyska` priamo.
 - Voľby: `uchyt` (výrez na prsty vpredu aj vzadu), `steny_mriezka`, `dno_mriezka` (šetrí ~100 g), `polovicne_oka_steny`, `polovicne_oka_dno`.
 
 ### Nastavenie slicera
-0,6 tryska · 0,30 vrstva · **wall loops 4** · bottom shells 7 · podpery nie · Textured PEI · Sport mode je OK (kontroluj podextrudovanie).
+Parametre sekcie Tlac nastavia model, v Bambu Studiu treba zvoliť zodpovedajúci profil. **Wall loops = `linky_steny`, bottom shells = vrstvy dna.** ECHO vypíše všetky hodnoty.
+
+| `tryska` | Vrstva | Wall loops | Bottom shells | Stena | Rebro | Dno |
+|---|---|---|---|---|---|---|
+| 0,6 | 0,30 | **4** | 7 | 2,3 mm | 4,6 mm | 2,1 mm |
+| 0,8 High Flow | 0,40 | **4** | 5 | 3,02 mm | 6,04 mm | 2,0 mm |
+| 0,8 High Flow, odľahčený | 0,40 | **3** | 4 | 2,29 mm | 4,58 mm | 1,6 mm |
+| 0,8 High Flow, najľahší | 0,40 | **2** | 3 | 1,55 mm | 3,1 mm | 1,2 mm |
+
+Spoločné: podpery nie · Textured PEI · Sport mode je OK (kontroluj podextrudovanie).
 
 ### Kľúčové konštrukčné rozhodnutia (prečo je to takto)
-- **Stena 2,3 mm** = 4 linky pri 0,62/0,3 → čisto z perimetrov. **Rebro mriežky = 2 × stena = 8 liniek** → preto wall loops 4 (rebro vyplnia perimetre z oboch susedných dier, žiadna výplň, žiadny gap fill).
-- **Dno 2,1 mm** = 7 vrstiev → bottom shells 7.
+- **Stena** = `linky_steny` celých liniek, predvolene 4 (2,3 mm pri 0,62/0,3, 3,02 mm pri 0,82/0,4) → čisto z perimetrov. **Rebro mriežky = 2 × stena = dvojnásobok liniek** → preto wall loops = `linky_steny` (rebro vyplnia perimetre z oboch susedných dier, žiadna výplň, žiadny gap fill).
+- **Stena s 3 linkami** má nepárny počet liniek, v sliceri skontroluj v náhľade, či v nej nevzniká gap fill.
+- **Dno** = predvolene 7 vrstiev po 0,3 alebo 5 vrstiev po 0,4, zmeniť sa dá cez `vrstvy_dna`.
+- **Tryska 0,8 so 4 linkami pridá materiál:** košík 250 × 300 × 250 má 554 cm³ namiesto 397 cm³ (+40 %, odhad z objemu modelu). So 3 linkami a 4 vrstvami dna má 380 cm³, teda o niečo menej ako pri 0,6. Pri mriežke je úspora času menšia, preto pred sériou porovnaj čas v sliceri. Košíky z oboch trysiek sa dajú stohovať, ale výška stohu sa na každom spoji líši asi o 0,7 mm.
 - **Diamantová mriežka, oko 30/60 (pomer 1:2):** hrany ~27° od zvislice → bez podpier; o ~20 % menej materiálu ako 24/48. Horný vrchol diamantu je ostrý (strop diery bez previsu), ostatné rohy zaoblené R 1,2.
 - **Rozteč sa dopasuje na plochu** (`round(L / oko_x)`), aby oká vyšli celé.
 - **Polovičné oká** na okrajoch mriežky (steny: dole a po bokoch, **hore nie** – vznikol by vodorovný strop; dno: všetky 4 strany). Orezané o pol rebra od okraja.
 - **Výrez úchytu:** oká, ktoré by doň zasiahli, sa vynechajú celé (žiadne orezané oká = žiadne vodorovné stropy). Prechod výrezu do hornej hrany je zaoblený R 8.
 - **Plné pásy:** zvislý stĺpik v rohu (`okraj_roh = r_roh + 4`), pás nad dnom 8 mm, pás pod hornou hranou s **vnútorným trojuholníkovým lemom 5 mm (45°/45°)** – najlacnejšia výstuha hornej hrany, tlačí sa bez podpier.
-- **Spodná hrana skosená 45° × 5 mm** zvonka a vnútri rovnobežne (konštantná hrúbka steny). Pri stohovaní spodné skosenie horného košíka sedí na hornej 45° ploche lemu dolného → zapadne o 2,7 mm. Assert stráži, aby `stena < skos_dole < stena + lem`.
+- **Spodná hrana skosená 45° × 5 mm** zvonka a vnútri rovnobežne (konštantná hrúbka steny). Pri stohovaní spodné skosenie horného košíka sedí na hornej 45° ploche lemu dolného → zapadne o `zapad`. Assert stráži, aby `stena < skos_dole < stena + lem`.
 - Rohy košíka R 8, okraj dna plný (`r_roh + 10`).
 
 ### Spotreba (odhad zo slicera, bez polovičných ôk)
